@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+  <title>jQuery List Selector Plugin</title>
+  <style type="text/css">
+
+    ul.selectable-list {
+      list-style: none;
+      *zoom: 1;
+    }
+
+    ul.selectable-list > li.selected {
+      border: 2px solid #f00;
+    }
+
+    ul.selectable-list > li {
+      border: 2px solid #999;
+      padding: 4px;
+      display: block;
+      background-color: #ccc;
+      float: left;
+      margin-bottom: 20px;
+      margin-left: 20px;
+    }
+
+    ul.selectable-list > li > div {
+      width: 60px;
+      height: 80px;
+    }
+
+    div.buttons
+    {
+      clear: both;
+    }
+
+  </style>
+</head>
+
+<body id="body">
+  <h1>jQuery List Selector Plugin</h1>
+
+  <ul id='selectable-list' class='selectable-list'>
+    <li data='item-a'><div>Item A</div></li>
+    <li data='item-b'><div>Item B</div></li>
+    <li data='item-c'><div>Item C</div></li>
+    <li data='item-d'><div>Item D</div></li>
+    <li data='item-e'><div>Item E</div></li>
+    <li data='item-f'><div>Item F</div></li>
+    <li data='item-g'><div>Item G</div></li>
+    <li data='item-h'><div>Item H</div></li>
+    <li data='item-i'><div>Item I</div></li>
+    <li data='item-j'><div>Item J</div></li>
+    <li data='item-k'><div>Item K</div></li>
+    <li data='item-l'><div>Item L</div></li>
+    <li data='item-m'><div>Item M</div></li>
+    <li data='item-n'><div>Item N</div></li>
+    <li data='item-o'><div>Item O</div></li>
+    <li data='item-p'><div>Item P</div></li>
+    <li data='item-q'><div>Item Q</div></li>
+    <li data='item-r'><div>Item R</div></li>
+    <li data='item-s'><div>Item S</div></li>
+    <li data='item-t'><div>Item T</div></li>
+    <li data='item-u'><div>Item U</div></li>
+    <li data='item-v'><div>Item V</div></li>
+    <li data='item-x'><div>Item X</div></li>
+    <li data='item-z'><div>Item Z</div></li>
+  </ul>
+
+  <div class="buttons">
+    <button id="selected-items">$('ul').listSelector('selectedItems')</button>
+    <button id="selected-elements">$('ul').listSelector('selectedElements')</button>
+  </div>
+
+  <script src="lib/jquery.js"></script>
+  <script src="src/jquery-list-selector.js"></script>
+  <script type="text/javascript">
+    $('#selectable-list').listSelector('init')
+
+    $('#selected-items').click(function(){
+      alert($('ul').listSelector('selectedItems'));
+    });
+
+    $('#selected-elements').click(function(){
+      alert($('ul').listSelector('selectedElements'));
+    });
+  </script>
+</body>
+</html>
