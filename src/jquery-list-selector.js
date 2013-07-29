@@ -7,6 +7,8 @@
     defaults: {
       postPropertyName: 'items[]',
       dataTag: 'data',
+      onToggle: function (elm) {
+      },
       onSelect: function (elm) {
         $(elm).addClass('selected');
       },
@@ -55,6 +57,9 @@
 
       $(elm).append('<input type="hidden" name="' + settings.postPropertyName + '" class="list-selector-hidden" value="' + data + '" />');
 
+      if (settings.onToggle)
+        settings.onToggle.apply(this, [elm, true]);
+
       if (settings.onSelect)
         settings.onSelect.apply(this, [elm]);
     },
@@ -65,6 +70,9 @@
         return;
 
       $('input[type=hidden].list-selector-hidden', elm).remove();
+
+      if (settings.onToggle)
+        settings.onToggle.apply(this, [elm, false]);
 
       if (settings.onUnselect)
         settings.onUnselect.apply(this, [elm]);
@@ -79,9 +87,13 @@
       });
     },
     selectedElements: function() {
-      var settings = listSettings[$(this).listSelector('listId')];
-
       return $('input[type=hidden].list-selector-hidden', this).closest('li');
+    },
+    unselectedElements: function() {
+      return $('li', this).not($(this).listSelector('selectedElements'));
+    },
+    elements: function() {
+      return $('li', this);
     },
     selectedItems: function() {
       var items = [];
@@ -103,4 +115,4 @@
     }
   }
 
-}(jQuery));
+})(jQuery);
