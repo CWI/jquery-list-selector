@@ -13,11 +13,11 @@
       onUnselect: function (elm) {
         $(elm).removeClass('selected');
       },
-      beforeSelect: function (elm) {
+      onBeforeSelect: function (elm) {
         // You can return false here to avoid selection
         return true;
       },
-      beforeUnselect: function (elm) {
+      onBeforeUnselect: function (elm) {
         // You can return false here to avoid unselection
         return true;
       }
@@ -50,7 +50,7 @@
       var settings = listSettings[$(this).listSelector('listId')];
       var data = $(elm).attr(settings.dataTag);
 
-      if (settings.beforeSelect && !settings.beforeSelect.apply(this, [elm]))
+      if (settings.onBeforeSelect && !settings.onBeforeSelect.apply(this, [elm]))
         return;
 
       $(elm).append('<input type="hidden" name="' + settings.postPropertyName + '" class="list-selector-hidden" value="' + data + '" />');
@@ -61,7 +61,7 @@
     unselect: function(elm) {
       var settings = listSettings[$(this).listSelector('listId')];
 
-      if (settings.beforeUnselect && !settings.beforeUnselect.apply(this, [elm]))
+      if (settings.onBeforeUnselect && !settings.onBeforeUnselect.apply(this, [elm]))
         return;
 
       $('input[type=hidden].list-selector-hidden', elm).remove();
