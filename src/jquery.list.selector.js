@@ -31,7 +31,7 @@
   * OTHER DEALINGS IN THE SOFTWARE.
   */
 (function($) {
-
+  "use strict"
   // Global settings
   listSettings = [];
 
@@ -57,7 +57,7 @@
       }
     },
     init: function(options) {
-      var settings = $.extend(methods['defaults'], options || {});
+      var settings = $.extend(methods.defaults, options || {});
 
       listSettings[$(this).listSelector('listId')] = settings;
 
@@ -132,7 +132,7 @@
 
       $('input[type=hidden].list-selector-hidden', this).each(function(){
         items.push($(this).val());
-      })
+      });
 
       return items;
     }
@@ -145,6 +145,6 @@
     } else {
       $.error('Undefined list selector method: ' + method);
     }
-  }
+  };
 
 })(jQuery);
